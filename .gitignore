@@ -5,3 +5,9 @@
 /PlayerBody Visibility/PokeMelon/.vs/PokeMelon/FileContentIndex
 /PlayerBody Visibility/PokeMelon/.vs/PokeMelon/v17
 /PlayerBody Visibility/PokeMelon/.vs/ProjectEvaluation
+*.dll
+/Collider Fix/PokeMelon/obj
+/Collider Fix/PokeMelon/.vs/PokeMelon/CopilotIndices
+/Collider Fix/PokeMelon/.vs
+Collider Fix/PokeMelon/bin/Debug/net472/MelonLoader.xml
+Collider Fix/PokeMelon/bin/Debug/net472/PokeMelon.pdb
