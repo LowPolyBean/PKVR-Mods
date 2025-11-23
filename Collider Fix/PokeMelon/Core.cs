@@ -29,13 +29,17 @@ namespace PokeMelon
         {   // loggerinstance.msg is just simple melonloader debugging.
             // set player rig again. (at the beginning of the game, PlayerMeta.localPlayer is a null reference because you have yet to login.)
             localPlayerRig = PlayerMeta.localPlayer;
+            
         }
 
         public override void OnUpdate()
         {
+            //Pokeball Mass becayse its too high (only 0.3 by default)
+            GameObject currentBall = GameObject.Find("Pokeball(Clone)");
+            currentBall.GetComponent<Rigidbody>().mass = 0.2f;
 
-            
-            
+
+
         }
     }
 }
