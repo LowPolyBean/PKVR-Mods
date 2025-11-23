@@ -29,23 +29,6 @@ namespace PokeMelon
         {   // loggerinstance.msg is just simple melonloader debugging.
             // set player rig again. (at the beginning of the game, PlayerMeta.localPlayer is a null reference because you have yet to login.)
             localPlayerRig = PlayerMeta.localPlayer;
-            LoggerInstance.Msg("playerrig acquired successfully!" + localPlayerRig.name);
-            // a temporary variable for the base parent of every model, "3DModel" which contains every playermodel below it as a child.
-            Transform modelbase = localPlayerRig.transform.GetChild(0);
-            LoggerInstance.Msg("models parent aqcuired successfully." + modelbase.name);
-            // get every child of the model base, and enable visibility.
-            foreach (Transform child in modelbase)
-            {  
-                // this in particular is quite interesting. each playermodel, unless belonging to another player, is set to layer "NoDepthInFirstPerson" which is being culled (you cant see it) by the game camera. this is a unique and interesting approach. what the following bit of code does is set all children of the model to the default layer. the playermodel hierarchy structure is different for each model, Sometimes it contains a camera pivot. in simple terms, There is 3DModel on top, PM_Hero_*insert character name* as a child of 3DModel, and as a child of PM_Hero, there is geometry, under the same name as its parent oftentimes, skeleton, and sometimes camerapivot.
-                LoggerInstance.Msg("attempting a playermodel..." + child.name);
-                foreach(Transform childsquared in child)
-                {
-                    childsquared.gameObject.layer = 0;
-                }
-            }
-            // disable hand geometry.
-            GameObject.Find("hands:Lhand").SetActive(false);
-            GameObject.Find("hands:Rhand").SetActive(false);
         }
 
         public override void OnUpdate()
