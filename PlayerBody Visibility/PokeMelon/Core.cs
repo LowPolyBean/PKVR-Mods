@@ -2,6 +2,7 @@
 using Mirror;
 using Mirror.Websocket;
 using PokemonUnity.Item;
+using RootMotion.FinalIK;
 using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,17 @@ namespace PokeMelon
             // disable hand geometry.
             GameObject.Find("hands:Lhand").SetActive(false);
             GameObject.Find("hands:Rhand").SetActive(false);
+            // Get VRIK component.
+            VRIK vrikComponent = localPlayerRig.GetComponent<VRIK>();
+            // If VRIK Component isn't null set both arms' rotation weights to 1, enabling rotation.
+            if (vrikComponent != null)
+            {
+                vrikComponent.solver.leftArm.rotationWeight = 1;
+                vrikComponent.solver.rightArm.rotationWeight = 1;
+            }
+            GameObject.Find("LeftAnchor").transform.eulerAngles = new Vector3(90, 90, 0);
+            GameObject.Find("RighttAnchor").transform.eulerAngles = new Vector3(90, 90, 0);
+
         }
 
         public override void OnUpdate()

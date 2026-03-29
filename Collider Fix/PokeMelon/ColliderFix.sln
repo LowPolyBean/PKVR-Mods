@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeMelon", "PokeMelon.csproj", "{C143D583-4FB0-456E-BF90-CF86F27414F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColliderFix", "ColliderFix.csproj", "{C143D583-4FB0-456E-BF90-CF86F27414F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
