@@ -2,6 +2,7 @@
 using Mirror;
 using Mirror.Websocket;
 using PokemonUnity.Item;
+using RootMotion.FinalIK;
 using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,16 +44,30 @@ namespace PokeMelon
                     childsquared.gameObject.layer = 0;
                 }
             }
-            // disable hand geometry.
+            // disable hand geometry/
             GameObject.Find("hands:Lhand").SetActive(false);
             GameObject.Find("hands:Rhand").SetActive(false);
+
         }
 
         public override void OnUpdate()
         {
+            localPlayerRig = PlayerMeta.localPlayer;
+            // get VRIK rig.
+            VRIK vrikComponent = localPlayerRig.GetComponent<VRIK>();
+            // if the VRIK rig is not null set rotationweight for both arms to 1 and the localPositions to be correct position and rotation wise to adjust for the new point of view.
+            if (vrikComponent != null)
+            {
+                LoggerInstance.Msg("GOT VRIK COMPONENT");
+                vrikComponent.solver.leftArm.rotationWeight = 1;
+                LoggerInstance.Msg("SET LEFT ARM");
+                vrikComponent.solver.rightArm.rotationWeight = 1;
+                LoggerInstance.Msg("SET RIGHT ARM");
+                GameObject.Find("LeftAnchor").transform.localEulerAngles = new Vector3(90, 90, 0);
+                GameObject.Find("RightAnchor").transform.localEulerAngles = new Vector3(-90, 90, 0);
+                GameObject.Find("HeadAnchor").transform.localPosition = new Vector3(0, -0.1f, -0.1f);
+            }
 
-            
-            
         }
     }
 }
